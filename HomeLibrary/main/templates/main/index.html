@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="row" style="width: 99%;">
+    <div class="col-6 my-3 ml-4 py-2" style="max-width: 44em;">
+        <h1 class="font-weight-light" style="font-family: 'Times New Roman'; font-size: 210%;">Добро пожаловать в электронную библиотеку!</h1>
+    </div>
+    <div class="col-4 my-3 ml-3 py-3" style="max-width: 18em;">
+        <form>
+            <input size="24" placeholder="Найти книгу...">
+        </form>
+    </div>
+    <div class="col-4 my-3 ml-3 py-2" style="max-width: 14em;">
+        <a href="add" class="btn" style="border: 1px solid black;">Добавить новую книгу</a>
+    </div>
+</div>
+<div class="mx-4">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-left" scope="col"> Название </th>
+                <th class="text-left" scope="col"> Автор </th>
+                <th class="text-center" scope="col"> Шкаф </th>
+                <th class="text-center" scope="col"> Полка </th>
+                <th class="text-right" scope="col"> Комментарий </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if books %}
+                {% for el in books %}
+                    <tr>
+                        <th class="text-left" scope="row"> {{ el.title }} </th>
+                        <td class="text-left" > {{ el.author }} </td>
+                        <td class="text-center" > {{ el.cupboard_number }} </td>
+                        <td class="text-center" > {{ el.shelf_number }} </td>
+                        <td class="text-right" > {{ el.comment }} </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <p>Библиотека пока пуста. Добавьте новые книги, например, через панель администратора.</p>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
